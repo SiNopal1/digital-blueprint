@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Yearbook 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        
+        * {
+            font-family: Inter, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #4a1a4a 50%, #1a1a2e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, rgb(167, 139, 250), rgb(236, 72, 153), rgb(167, 139, 250));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                opacity: 0.1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.3;
+                transform: scale(1.1);
+            }
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: pulse-glow 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            top: 0;
+            left: 25%;
+            width: 400px;
+            height: 400px;
+            background: rgba(168, 85, 247, 0.1);
+        }
+
+        .orb-2 {
+            bottom: 0;
+            right: 25%;
+            width: 400px;
+            height: 400px;
+            background: rgba(236, 72, 153, 0.1);
+            animation-delay: 1s;
+        }
+
+        .orb-3 {
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            background: rgba(59, 130, 246, 0.1);
+            animation-delay: 2s;
+        }
+
+        .card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .avatar {
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .avatar {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .sparkle-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .sparkle-icon {
+            transform: rotate(12deg);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-animate {
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .search-animate {
+            animation: fadeInDown 1s ease-out 0.3s backwards;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .heartbeat {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        .search-box {
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus-within {
+            transform: translateY(-2px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, rgb(167, 139, 250), rgb(236, 72, 153));
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, rgb(196, 181, 253), rgb(244, 114, 182));
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Main Container -->
+    <div class="relative z-10">
+        <!-- Header -->
+        <header class="text-center py-16 px-4 header-animate">
+            <h1 class="text-6xl md:text-8xl font-black gradient-text mb-6">
+                Class of 2026
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-4 font-light">
+                Digital Yearbook
+            </p>
+            <div class="flex items-center justify-center gap-2 text-purple-400">
+                <i class="fas fa-heart heartbeat"></i>
+                <p class="text-sm">40 Amazing Journeys Begin Here</p>
+                <i class="fas fa-heart heartbeat" style="animation-delay: 0.5s"></i>
+            </div>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="max-w-2xl mx-auto px-4 mb-12 search-animate">
+            <div class="relative group search-box">
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+                <div class="relative flex items-center">
+                    <i class="fas fa-search absolute left-6 text-purple-400"></i>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Cari nama, jurusan, atau motivasi..."
+                        class="w-full bg-gray-900/80 backdrop-blur-sm text-white pl-14 pr-6 py-4 rounded-2xl border border-purple-500/30 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all duration-300 placeholder-gray-500"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <!-- Student Cards Grid -->
+        <div class="max-w-7xl mx-auto px-4 pb-20">
+            <div id="cardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Cards will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="text-center py-20 hidden">
+                <div class="text-6xl mb-4">🔍</div>
+                <p class="text-2xl text-gray-400">Tidak ditemukan</p>
+                <p class="text-gray-500 mt-2">Coba kata kunci lain</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-12 px-4 border-t border-purple-500/20">
+            <p class="text-gray-400 mb-2">Made with love for our amazing class</p>
+            <p class="text-sm text-gray-500">© 2025 - Forever in our memories</p>
+        </footer>
+    </div>
+
+    <script>
+        const students = [
+            { id: 1, name: "Tasya", path: "ITS Teknik Industri", motivation: "Keep pushing your limits" },
+            { id: 2, name: "Andynna", path: "ITS (DKV)", motivation: "segala kesalahan dimasa lalu dapat diperbaiki di masa sekarang" },
+            { id: 3, name: "Aulia", path: "UINSA - Filsafat (S1)", motivation: "Keheningan adalah bahasa Tuhan." },
+            { id: 4, name: "Aurel", path: "ITB - Teknik Pertambangan", motivation: "take the risk or lose the chance" },
+            { id: 5, name: "Afaq", path: "UM - Desain Komunikasi Visual", motivation: "just enjoy your life" },
+            { id: 6, name: "Antoo", path: "ITS - Teknik Sipil", motivation: "Fearfully and wonderfully made" },
+            { id: 7, name: "Dido", path: "UNESA - Kedokteran Gigi", motivation: "Ngeband Kuliah aja juga seru" },
+            { id: 8, name: "Dinda", path: "UGM - Teknik Pertambangan", motivation: "harus bangun pagi" },
+            { id: 9, name: "Euro", path: "ITS - Teknik Industri", motivation: "Besok bangun pagi!" },
+            { id: 10, name: "Farid", path: "ITS - Sistem Informasi", motivation: "Dikit demi dikit lama lama menjadi bukit!" },
+            { id: 11, name: "Fernanda", path: "UB - Sastra China", motivation: "It's okay to start slow, just don't stop." },
+            { id: 12, name: "Firdaus", path: "ITS - Teknik Sipil", motivation: "Gagal sekali, bangkit lagi" },
+            { id: 13, name: "Gabriella", path: "Unair - Biomedis", motivation: "You were born to be who you are" },
+            { id: 14, name: "Wayan", path: "PPI MADIUN - TMP", motivation: "jika tidak ada yang mendukungmu maka lakukanlah sendiri" },
+            { id: 15, name: "Kevin", path: "ITS - Sistem Informasi", motivation: "belajar dari kesalahan" },
+            { id: 16, name: "Luqman", path: "ITS - Teknik Material S1", motivation: "Tetap semangat, tetap berguna" },
+            { id: 17, name: "Lyonel", path: "UB - Sistem Informasi", motivation: "Bermimpilah sampai membuatmu takut, jika tidak takut berarti mimpimu kurang tinggi" },
+            { id: 18, name: "Lutfi", path: "UB - Teknik Industri", motivation: "tidak ada kata gagal dalam hidup!" },
+            { id: 19, name: "Meysa", path: "ITS - Desain Produk Industri", motivation: "Dijalani dengan senang hati" },
+            { id: 20, name: "Wildan", path: "ITS - Teknik Mesin", motivation: "Serumit apapun jalan hidup, selagi kita tahu arah kiblat untuk bersujud, yakinlah pasti allah memberi petunjuk" },
+            { id: 21, name: "Fuzan", path: "UGM - Ilmu Hukum", motivation: "Belajar terus sampai mati" },
+            { id: 22, name: "Mufid", path: "ITB - Teknik Mesin", motivation: "tuntutlah ilmu sampai ke negeri china" },
+            { id: 23, name: "Ibram", path: "PIP Semarang - Teknik Nautika", motivation: "Perjuangkan dan menangkan" },
+            { id: 24, name: "Rasya", path: "ITS - Teknik Elektro", motivation: "Turn Pain Into Your Power" },
+            { id: 25, name: "Attha", path: "ITS - Teknik Kimia", motivation: "Take your time, but dont waste it" },
+            { id: 26, name: "Naufal", path: "ITS - Teknik Informatika", motivation: "Rise stronger after every fall" },
+            { id: 27, name: "Rafih", path: "UGM - Hukum", motivation: "Be Kind, Be right and respectful" },
+            { id: 28, name: "Rayhan", path: "ITS/UNEJ - Teknik Elektro", motivation: "tetap hidup dan berdoa" },
+            { id: 29, name: "Rama", path: "UGM - Sistem Informasi", motivation: "Gagal bukanlah jawaban." },
+            { id: 30, name: "Jendra", path: "ITS - Teknik Informatika", motivation: "habis gelap terbitlah terang" },
+            { id: 31, name: "Elga", path: "ITS - Teknik Industri", motivation: "Gagal itu cuma latihan supaya sukses nanti nggak kaget" },
+            { id: 32, name: "Renanda", path: "Bekerja", motivation: "Semangat dan tetap hidup" },
+            { id: 33, name: "Rika", path: "Unair - K3 (S1)", motivation: "wake up and be cool today" },
+            { id: 34, name: "Robian", path: "PT. Pama - Operator Alat Berat", motivation: "tetap konsisten" },
+            { id: 35, name: "Sean", path: "ITS - Teknik Industri", motivation: "Face The Fear, Build The Future" },
+            { id: 36, name: "Shifa", path: "Bekerja", motivation: "kita tidak harus sempurna untuk jadi luar biasa" },
+            { id: 37, name: "Tegar", path: "ITS - Arsitektur", motivation: "belajar wow" },
+            { id: 38, name: "Vicky", path: "PENS - Teknik Elektro", motivation: "tanpa usaha bakat tak berarti" },
+            { id: 39, name: "Volta", path: "ITS - Teknik Geomatika", motivation: "Langkah kecil menuju mimpi besar" },
+            { id: 40, name: "Zaskia", path: "UNAIR - Teknik Lingkungan", motivation: "Ilmu abadi, hidup sekali." }
+        ];
+
+        function createCard(student, index) {
+            return `
+                <div class="card group relative bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm rounded-2xl p-6 border border-purple-500/20 hover:border-purple-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20" data-index="${index}">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-600/0 to-pink-600/0 group-hover:from-purple-600/10 group-hover:to-pink-600/10 rounded-2xl transition-all duration-500"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="avatar w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+                                ${student.name.charAt(0)}
+                            </div>
+                            <div class="sparkle-icon w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
+                                <i class="fas fa-sparkles text-purple-400"></i>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
+                            ${student.name}
+                        </h3>
+
+                        <div class="flex items-center gap-2 mb-4 text-purple-300">
+                            <i class="fas fa-graduation-cap"></i>
+                            <p class="text-sm font-medium">${student.path}</p>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -left-2 top-0 w-1 h-full bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></div>
+                            <p class="pl-4 text-gray-300 italic text-sm leading-relaxed">
+                                "${student.motivation}"
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-all duration-500 -z-10"></div>
+                </div>
+            `;
+        }
+
+        function renderCards(studentsToRender) {
+            const container = document.getElementById('cardsContainer');
+            const emptyState = document.getElementById('emptyState');
+
+            if (studentsToRender.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                container.innerHTML = studentsToRender.map((student, index) => createCard(student, index)).join('');
+                
+                // Animate cards in
+                setTimeout(() => {
+                    const cards = document.querySelectorAll('.card');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 50);
+                    });
+                }, 100);
+            }
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = students.filter(student => 
+                student.name.toLowerCase().includes(searchTerm) ||
+                student.path.toLowerCase().includes(searchTerm) ||
+                student.motivation.toLowerCase().includes(searchTerm)
+            );
+            renderCards(filtered);
+        });
+
+        // Initial render
+        renderCards(students);
+    </script>
+</body>
+</html>
